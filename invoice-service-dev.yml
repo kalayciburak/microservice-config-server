@@ -41,3 +41,8 @@ spring:
             value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
         topic:
             name: tbyte
+management:
+  .endpoints:
+    .web:
+      .exposure:
+        include: "*"

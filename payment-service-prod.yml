@@ -27,3 +27,8 @@ spring:
                     validation:
                         mode: none
         show-sql: true
+management:
+  .endpoints:
+    .web:
+      .exposure:
+        include: "*"
