@@ -1,52 +1,57 @@
 eureka:
-    client:
-        fetchRegistry: true
-        registerWithEureka: true
-        serviceUrl:
-            defaultZone: http://localhost:9000/eureka
-    instance:
-        instance-id: ${spring.application.name}:${instanceId:${random.value}}
-        preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+    preferIpAddress: true
 server:
-    port: 0
+  port: 0
 spring:
-    application:
-        name: inventory-service
-    zipkin:
-        base-url: http://localhost:9411
-    datasource:
-        password: torukobyte123
-        url: jdbc:postgresql://localhost:5432/rentacarInventorydb
-        username: postgres
-    jpa:
-        hibernate:
-            ddl-auto: update
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
-            javax:
-                persistence:
-                    validation:
-                        mode: none
-        show-sql: true
-    kafka:
-        consumer:
-            auto-offset-reset: earliest
-            bootstrap-servers: localhost:9092
-            group-id: inventory
-            key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-            properties:
-                spring:
-                    json:
-                        trusted:
-                            packages: '*'
-            value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-        producer:
-            bootstrap-servers: localhost:9092
-            key-serializer: org.apache.kafka.common.serialization.StringSerializer
-            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-        topic:
-            name: topic-inventory
+  application:
+    name: inventory-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/auth/realms/RentACarMicroservice/protocol/openid-connect/certs
+  zipkin:
+    base-url: http://localhost:9411
+  datasource:
+    password: torukobyte123
+    url: jdbc:postgresql://localhost:5432/rentacarInventorydb
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      javax:
+        persistence:
+          validation:
+            mode: none
+    show-sql: true
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      bootstrap-servers: localhost:9092
+      group-id: inventory
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    topic:
+      name: topic-inventory
 
 management:
   endpoint:
@@ -57,7 +62,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: "*"
   metrics:
     export:
       prometheus:
