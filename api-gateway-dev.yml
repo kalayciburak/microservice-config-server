@@ -16,7 +16,6 @@ spring:
       routes:
         - filters:
             - RemoveRequestHeader=Cookie
-            - StripPrefix=0
           id: inventory-service-dev
           predicates:
             - Path=/inventory-service/api/v1/**
