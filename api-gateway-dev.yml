@@ -31,6 +31,30 @@ spring:
             - Path=/rental-service/api/v1/**
             - Method=GET,POST,PUT,DELETE
           uri: lb://rental-service
+        - filters:
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+          id: payment-service
+          predicates:
+            - Path=/payment-service/api/v1/**
+            - Method=GET,POST,PUT,DELETE
+          uri: lb://payment-service
+        - filters:
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+          id: invoice-service
+          predicates:
+            - Path=/invoice-service/api/v1/**
+            - Method=GET,POST,PUT,DELETE
+          uri: lb://invoice-service
+        - filters:
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+          id: filter-service
+          predicates:
+            - Path=/filter-service/api/v1/**
+            - Method=GET,POST,PUT,DELETE
+          uri: lb://filter-service
       discovery:
         locator:
           enabled: true
