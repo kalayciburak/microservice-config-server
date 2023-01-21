@@ -16,7 +16,8 @@ spring:
       routes:
         - filters:
             - RemoveRequestHeader=Cookie
-            - StripPrefix=1
+            # Remove the first path segment from the route so it return /api/v1/** instead of /inventory-service/api/v1/**
+            - StripPrefix=1 
           id: inventory-service-dev
           predicates:
             - Path=/inventory-service/api/v1/**
