@@ -26,11 +26,11 @@ spring:
         - filters:
             - RemoveRequestHeader=Cookie
             - StripPrefix=1
-            id: rental-service
-            predicates:
-              - Path=/rental-service/api/v1/**
-              - Method=GET,POST,PUT,DELETE
-            uri: lb://rental-service
+          id: rental-service
+          predicates:
+            - Path=/rental-service/api/v1/**
+            - Method=GET,POST,PUT,DELETE
+          uri: lb://rental-service
       discovery:
         locator:
           enabled: true
