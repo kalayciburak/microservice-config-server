@@ -18,11 +18,19 @@ spring:
             - RemoveRequestHeader=Cookie
             # Remove the first path segment from the route so it return /api/v1/** instead of /inventory-service/api/v1/**
             - StripPrefix=1 
-          id: inventory-service-dev
+          id: inventory-service
           predicates:
             - Path=/inventory-service/api/v1/**
             - Method=GET,POST,PUT,DELETE
           uri: lb://inventory-service
+        - filters:
+            - RemoveRequestHeader=Cookie
+            - StripPrefix=1
+            id: rental-service
+            predicates:
+              - Path=/rental-service/api/v1/**
+              - Method=GET,POST,PUT,DELETE
+            uri: lb://rental-service
       discovery:
         locator:
           enabled: true
