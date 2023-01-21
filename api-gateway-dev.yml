@@ -16,9 +16,10 @@ spring:
       routes:
         - filters:
             - RemoveRequestHeader=Cookie
+            - StripPrefix=1
           id: inventory-service
           predicates:
-            - Path=/inventory-service/**
+            - Path=/**
             - Method=GET,POST,PUT,DELETE
           uri: lb://inventory-service
       discovery:
