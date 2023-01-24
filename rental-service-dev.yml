@@ -21,7 +21,7 @@ spring:
     base-url: http://localhost:9411
   datasource:
     password: torukobyte123
-    url: jdbc:postgresql://localhost:5432/rentacarRentaldb
+    url: jdbc:postgresql://localhost:5432/RentACarRentalDB
     username: postgres
   jpa:
     hibernate:
@@ -39,8 +39,6 @@ spring:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    topic:
-      name: topic-rental
 
 management:
   endpoint:

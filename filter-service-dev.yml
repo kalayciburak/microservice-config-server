@@ -19,15 +19,14 @@ spring:
           jwk-set-uri: http://localhost:8080/auth/realms/RentACarMicroservice/protocol/openid-connect/certs
   zipkin:
     base-url: http://localhost:9411
-  data:
-    mongodb:
-      database: inventory
-      uri: mongodb://localhost:27017
+  # data:
+  #   mongodb:
+  #     database: inventory
+  #     uri: mongodb://localhost:27017
   kafka:
     consumer:
       auto-offset-reset: earliest
       bootstrap-servers: localhost:9092
-      group-id: filter
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
         spring:
@@ -35,8 +34,6 @@ spring:
             trusted:
               packages: "*"
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-    topic:
-      name: topic-filter
 
 management:
   endpoint:

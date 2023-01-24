@@ -1,39 +1,44 @@
 eureka:
-    client:
-        fetchRegistry: true
-        registerWithEureka: true
-        serviceUrl:
-            defaultZone: http://localhost:9000/eureka
-    instance:
-        instance-id: ${spring.application.name}:${instanceId:${random.value}}
-        preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
+  instance:
+    instance-id: ${spring.application.name}:${instanceId:${random.value}}
+    preferIpAddress: true
 server:
-    port: 0
+  port: 0
 spring:
-    application:
-        name: rental-service
-    datasource:
-        password: torukobyte123
-        url: jdbc:postgresql://localhost:5432/rentacarRentaldb
-        username: postgres
-    jpa:
-        hibernate:
-            ddl-auto: update
-        properties:
-            hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
-            javax:
-                persistence:
-                    validation:
-                        mode: none
-        show-sql: true
-    kafka:
-        producer:
-            bootstrap-servers: localhost:9092
-            key-serializer: org.apache.kafka.common.serialization.StringSerializer
-            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-        topic:
-            name: topic-rental
+  application:
+    name: rental-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/auth/realms/RentACarMicroservice/protocol/openid-connect/certs
+  zipkin:
+    base-url: http://localhost:9411
+  datasource:
+    password: torukobyte123
+    url: jdbc:postgresql://localhost:5432/RentACarRentalDB
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+      javax:
+        persistence:
+          validation:
+            mode: none
+    show-sql: true
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 management:
   endpoint:
@@ -44,7 +49,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: "*"
   metrics:
     export:
       prometheus:

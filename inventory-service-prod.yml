@@ -17,9 +17,11 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8080/auth/realms/RentACarMicroservice/protocol/openid-connect/certs
+  zipkin:
+    base-url: http://localhost:9411
   datasource:
     password: torukobyte123
-    url: jdbc:postgresql://localhost:5432/rentacarInventorydb
+    url: jdbc:postgresql://localhost:5432/RentACarInventoryDB
     username: postgres
   jpa:
     hibernate:
@@ -36,7 +38,6 @@ spring:
     consumer:
       auto-offset-reset: earliest
       bootstrap-servers: localhost:9092
-      group-id: inventory
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
         spring:
@@ -48,8 +49,6 @@ spring:
       bootstrap-servers: localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    topic:
-      name: topic-inventory
 
 management:
   endpoint:

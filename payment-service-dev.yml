@@ -21,7 +21,7 @@ spring:
     base-url: http://localhost:9411
   datasource:
     password: torukobyte123
-    url: jdbc:postgresql://localhost:5432/rentacarPaymentdb
+    url: jdbc:postgresql://localhost:5432/RentACarPaymentDB
     username: postgres
   jpa:
     hibernate:
