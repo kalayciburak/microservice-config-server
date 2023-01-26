@@ -3,7 +3,7 @@ eureka:
     fetchRegistry: true
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:9000/eureka
+      defaultZone: http://discovery-server:9000/eureka
   instance:
     instance-id: ${spring.application.name}:${instanceId:${random.value}}
     preferIpAddress: true
@@ -16,12 +16,12 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://localhost:8080/auth/realms/RentACarMicroservice/protocol/openid-connect/certs
+          jwk-set-uri: http://keycloak:8080/auth/realms/RentACarMicroservice/protocol/openid-connect/certs
   zipkin:
-    base-url: http://localhost:9411
+    base-url: http://zipkin:9411
   datasource:
     password: torukobyte123
-    url: jdbc:postgresql://localhost:5432/RentACarInventoryDB
+    url: jdbc:postgresql://postgres:5433/inventorydb-prod
     username: postgres
   jpa:
     hibernate:
@@ -37,7 +37,7 @@ spring:
   kafka:
     consumer:
       auto-offset-reset: earliest
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: kafka:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
         spring:
@@ -46,7 +46,7 @@ spring:
               packages: "*"
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
     producer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: kafka:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
