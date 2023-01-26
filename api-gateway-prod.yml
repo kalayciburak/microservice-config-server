@@ -20,7 +20,7 @@ spring:
             - StripPrefix=1 
           id: inventory-service
           predicates:
-            - Path=/inventory-service/api/v1/**
+            - Path=/inventory-service/api/v1/**, /inventory-service/actuator/prometheus
             - Method=GET,POST,PUT,DELETE
           uri: lb://inventory-service
         - filters:
@@ -28,7 +28,7 @@ spring:
             - StripPrefix=1
           id: rental-service
           predicates:
-            - Path=/rental-service/api/v1/**
+            - Path=/rental-service/api/v1/**, /rental-service/actuator/prometheus
             - Method=GET,POST,PUT,DELETE
           uri: lb://rental-service
         - filters:
@@ -36,7 +36,7 @@ spring:
             - StripPrefix=1
           id: payment-service
           predicates:
-            - Path=/payment-service/api/v1/**
+            - Path=/payment-service/api/v1/**, /payment-service/actuator/prometheus
             - Method=GET,POST,PUT,DELETE
           uri: lb://payment-service
         - filters:
@@ -44,7 +44,7 @@ spring:
             - StripPrefix=1
           id: invoice-service
           predicates:
-            - Path=/invoice-service/api/v1/**
+            - Path=/invoice-service/api/v1/**, /invoice-service/actuator/prometheus
             - Method=GET,POST,PUT,DELETE
           uri: lb://invoice-service
         - filters:
@@ -52,7 +52,7 @@ spring:
             - StripPrefix=1
           id: filter-service
           predicates:
-            - Path=/filter-service/api/v1/**
+            - Path=/filter-service/api/v1/**, /filter-service/actuator/prometheus
             - Method=GET,POST,PUT,DELETE
           uri: lb://filter-service
       discovery:
