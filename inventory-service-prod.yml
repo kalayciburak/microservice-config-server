@@ -21,7 +21,7 @@ spring:
     base-url: http://zipkin:9411
   datasource:
     password: torukobyte123
-    url: jdbc:postgresql://postgres:5434/inventorydb-prod
+    url: jdbc:postgresql://postgres:5434/inventorydb
     username: postgres
   jpa:
     hibernate:
