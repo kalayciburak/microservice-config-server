@@ -10,11 +10,13 @@ eureka:
 server:
   port: 0
 spring:
+  redis:
+    host: redis
+    port: 6379
   data:
-    elasticsearch:
-      node-name: es-node
-      cluster-name: es-cluster
-      cluster-nodes: http://elasticsearch:9200
+    mongodb:
+      database: filterdb
+      uri: mongodb://localhost:27017
   application:
     name: filter-service
   security:
