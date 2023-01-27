@@ -10,6 +10,11 @@ eureka:
 server:
   port: 0
 spring:
+  data:
+    elasticsearch:
+      node-name: es-node
+      cluster-name: es-cluster
+      cluster-nodes: http://elasticsearch:9200
   application:
     name: filter-service
   security:
