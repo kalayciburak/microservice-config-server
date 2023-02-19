@@ -19,10 +19,10 @@ spring:
           jwk-set-uri: http://localhost:8080/auth/realms/RentACarMicroservice/protocol/openid-connect/certs
   zipkin:
     base-url: http://localhost:9411
-  # data:
-  #   mongodb:
-  #     database: inventory
-  #     uri: mongodb://localhost:27017
+  data:
+    mongodb:
+      database: filterdb-dev
+      uri: mongodb://localhost:27017
   kafka:
     consumer:
       auto-offset-reset: earliest
