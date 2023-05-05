@@ -10,6 +10,8 @@ eureka:
 server:
   port: 0
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: rental-service
   security:
